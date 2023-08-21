@@ -1,3 +1,6 @@
+// Given the head of a sorted linked list, delete all duplicates such that each element
+// appears only once. Return the loinked list sorted as well.
+
 #include <iostream>
 using namespace std;
 
@@ -51,30 +54,35 @@ public:
     }
 };
 
-void deleteAlt(Node *&head)
+void answer(Node *&head)
 {
     Node *temp = head;
-    while (temp != NULL && temp->next != NULL)
+    while (temp != NULL)
     {
-        Node *currentPos = temp->next;
-        temp->next = temp->next->next;
-        free(currentPos);
+
+        while (temp->next != NULL && (temp->val) == (temp->next->val))
+        // while (temp->val == temp->next->val && temp->next != NULL)  THIS WILL PRODUCE AN ERROR BECAUSE IF TEMP->NEXT is NULL then TEMP->NEXT->VAL will give error.
+        {
+            Node *current = temp->next; // node to delete
+            temp->next = temp->next->next;
+            free(current);
+        }
         temp = temp->next;
     }
 }
+
 int main()
 {
     LinkedList ll;
     ll.insertAtEnd(1);
     ll.insertAtEnd(2);
+    ll.insertAtEnd(2);
     ll.insertAtEnd(3);
-    ll.insertAtEnd(4);
-    ll.insertAtEnd(5);
-    ll.insertAtEnd(6);
+    ll.insertAtEnd(3);
+    ll.insertAtEnd(3);
     ll.display();
 
-    deleteAlt(ll.head);
+    answer(ll.head);
     ll.display();
-
     return 0;
 }
