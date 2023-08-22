@@ -1,4 +1,4 @@
-// Given the head of a singly linked list, reverse the list and return the reversed list.
+// Given the head of a singly linked list, reverse the list and return the reversed list. (Recursively)
 
 #include <iostream>
 using namespace std;
@@ -55,19 +55,16 @@ public:
     }
 };
 
-Node *reverseNode(Node *&head)
+Node *reverseLlRec(Node *&head)
 {
-    Node *prevPtr = NULL;
-    Node *currentPtr = head;
-    while (currentPtr != NULL)
+    if (head->next == NULL || head == NULL)
     {
-        Node *nextPtr = currentPtr->next;
-        currentPtr->next = prevPtr;
-        prevPtr = currentPtr;
-        currentPtr = nextPtr;
+        return head;
     }
 
-    Node *new_head = prevPtr;
+    Node *new_head = reverseLlRec(head->next);
+    head->next->next = head;
+    head->next = NULL;
     return new_head;
 }
 
@@ -82,7 +79,7 @@ int main()
     ll.insertAtEnd(6);
     ll.display();
 
-    ll.head = reverseNode(ll.head);
+    ll.head = reverseLlRec(ll.head);
     ll.display();
 
     return 0;
