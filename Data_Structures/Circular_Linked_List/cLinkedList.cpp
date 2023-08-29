@@ -93,6 +93,63 @@ public:
         } while (temp != head);
         cout << endl;
     }
+
+    void updateAtPos(int val, int pos)
+    {
+
+        Node *temp = head;
+        int currentPos = 0;
+        while (currentPos != pos)
+        {
+            temp = temp->next;
+            currentPos++;
+        }
+
+        temp->val = val;
+    }
+
+    void deleteAtStart()
+    {
+
+        Node *temp = head;
+        Node *tail = head;
+        while (tail->next != head)
+        {
+            tail = tail->next;
+        }
+        head = head->next;
+        tail->next = head;
+        free(temp);
+    }
+
+    void deleteAtEnd()
+    {
+
+        Node *tail = head;
+        while (tail->next->next != head)
+        {
+            tail = tail->next;
+        }
+        Node *temp = tail->next;
+        // head = head->next;
+        tail->next = head;
+        free(temp);
+    }
+    void deleteAtPos(int pos)
+    {
+
+        Node *temp = head;
+        int currentPos = 0;
+        while (currentPos != pos - 1)
+        {
+            temp = temp->next;
+            currentPos++;
+        }
+
+        Node *dNode = temp->next;
+        temp->next = temp->next->next;
+        free(dNode);
+    }
 };
 
 int main()
@@ -107,6 +164,15 @@ int main()
     cll.insertAtEnd(6);
     cll.insertAtStart(20);
     cll.insertAtPos(30, 4);
+    cll.display();
+    cll.updateAtPos(90, 4);
+    cll.display();
+    cll.deleteAtPos(4);
+    cll.display();
+    cll.display();
+    cll.deleteAtStart();
+    cll.display();
+    cll.deleteAtEnd();
     cll.display();
     return 0;
 }
