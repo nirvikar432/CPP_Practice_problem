@@ -41,7 +41,6 @@ class Stack{
 
         }
         Node * new_node = new Node(data);
-        Node * temp = head;
         new_node->next = head;
         head = new_node;
         currSize++;
