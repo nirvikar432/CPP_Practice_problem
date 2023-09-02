@@ -17,6 +17,7 @@ int histogram(vector<int> &arr)
             int nse = i;
             st.pop();
             int pse = (st.empty()) ? (-1) : st.top();
+            // cout<<element<<" "<<pse<<" "<<nse<<endl;
             ans = max(ans, element * (nse - pse - 1));
         }
         st.push(i);
@@ -28,6 +29,7 @@ int histogram(vector<int> &arr)
         int nse = size;
         st.pop();
         int pse = (st.empty()) ? (-1) : st.top();
+        // cout<<element<<" "<<pse<<" "<<nse<<endl;
         ans = max(ans, element * (nse - pse - 1));
     }
 
