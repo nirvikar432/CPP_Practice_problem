@@ -27,12 +27,12 @@ int eval(string &str){
             st.push(ch - '0');
         }
         else{
-            int n2 = st.top();
-            st.pop();
-            int n1 = st.top();
-            st.pop();
+                int n2 = st.top();
+                st.pop();
+                int n1 = st.top();
+                st.pop();
 
-            st.push(calculate(n1,n2,ch));
+                st.push(calculate(n1,n2,ch));
         }
     }
     return st.top();
