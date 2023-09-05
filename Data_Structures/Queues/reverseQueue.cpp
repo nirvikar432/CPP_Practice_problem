@@ -3,6 +3,22 @@
 #include<queue>
 using namespace std;
 
+
+queue<int> reverseQueue(queue<int> &qu){
+    stack<int> st;
+    while(!qu.empty()){
+        st.push(qu.front());
+        qu.pop();
+    }
+
+    while(!st.empty()){
+        qu.push(st.top());
+        st.pop();
+    }
+
+    return qu;
+
+}
 int main()
 {
     queue<int> qu;
@@ -14,19 +30,21 @@ int main()
     qu.push(5);
 
 
-    while(!qu.empty()){
-        st.push(qu.front());
-        qu.pop();
-    }
+    // while(!qu.empty()){
+    //     st.push(qu.front());
+    //     qu.pop();
+    // }
 
-    while(!st.empty()){
-        qu.push(st.top());
-        st.pop();
-    }
+    // while(!st.empty()){
+    //     qu.push(st.top());
+    //     st.pop();
+    // }
 
-    while(!qu.empty()){
-        cout<<qu.front()<<" ";
-        qu.pop();
+    queue<int> ans = reverseQueue(qu);
+
+    while(!ans.empty()){
+        cout<<ans.front()<<" ";
+        ans.pop();
     }
     
     return 0;
