@@ -15,11 +15,17 @@ int main()
     directory["Name 4"] = 1321;
     directory.insert(make_pair("Name 5", 202020)); // O(log n)
 
-    for (auto elem : directory)
-    {
-        cout << "Name " << elem.first << endl
-             << "Number " << elem.second << endl;
-    }
+    // for (auto elem : directory)
+    // {
+    //     cout << "Name " << elem.first << endl
+    //          << "Number " << elem.second << endl;
+    // }
 
+    map<string, int>::iterator itr;
+    for (itr = directory.begin(); itr != directory.end(); itr++)
+    {
+        cout << itr->first << endl
+             << itr->second << endl;
+    }
     return 0;
 }
