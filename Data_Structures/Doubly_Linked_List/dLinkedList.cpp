@@ -179,8 +179,8 @@ int main()
     dll.insertAtEnd(2);
     dll.insertAtEnd(3);
     dll.insertAtEnd(4);
-    dll.insertAtEnd(5);
-    dll.insertAtEnd(6);
+    // dll.insertAtEnd(5);
+    // dll.insertAtEnd(6);
 
     // dll.insertAtKPos(20, 3);
     dll.display();
@@ -190,7 +190,7 @@ int main()
 
     // dll.deleteAtEnd();
     // dll.display();
-    dll.deleteAtPos(3);
+    dll.deleteAtPos(2);
     dll.display();
 
     return 0;
