@@ -32,6 +32,27 @@ void insertAtEnd(Node *&head, int val)
 
     temp->next = new_node;
 }
+void insertAtMiddle(Node *&head, int val)
+{
+    Node *new_node = new Node(val);
+    if (head == NULL)
+    {
+        head = new_node;
+        return;
+    }
+
+    Node *slowPtr = head;
+    Node *fastPtr = head;
+    while (fastPtr->next && fastPtr->next->next)
+    {
+        slowPtr = slowPtr->next;
+        fastPtr = fastPtr->next->next;
+    }
+    new_node->next = slowPtr->next;
+    slowPtr->next = new_node;
+
+    return;
+}
 
 void insertAtPos(Node *&head, int val, int pos)
 {
@@ -75,6 +96,16 @@ void deleteAtHead(Node *&head)
 
 void deleteAtEnd(Node *&head)
 {
+    if (head == NULL)
+    {
+        return;
+    }
+    if (head->next == NULL)
+    {
+        free(head);
+        head = NULL;
+        return;
+    }
     Node *temp = head;
 
     while (temp->next->next != NULL)
@@ -84,6 +115,32 @@ void deleteAtEnd(Node *&head)
     Node *dNode = temp->next;
     temp->next = NULL;
     free(dNode);
+}
+void deleteAtMiddle(Node *&head)
+{
+    if (head == NULL)
+    {
+        return;
+    }
+    if (head->next == NULL)
+    {
+        free(head);
+        head = NULL;
+        return;
+    }
+    Node *slowPtr = head;
+    Node *fastPtr = head;
+    Node *prevSlowPtr = NULL;
+    ;
+    while (fastPtr && fastPtr->next) // 1 2 3 4 5           1 2 3 4
+    {
+        prevSlowPtr = slowPtr;
+        slowPtr = slowPtr->next;
+        fastPtr = fastPtr->next->next;
+    }
+    prevSlowPtr->next = slowPtr->next;
+    free(slowPtr);
+    return;
 }
 
 void deleteAtPos(Node *head, int pos)
