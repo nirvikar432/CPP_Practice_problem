@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 vector<int> nextGreaterElement(vector<int> &arr)
@@ -113,28 +114,28 @@ int main()
     vector<int> result2 = prevGreaterElement(input);
     vector<int> result3 = prevSmallerElement(input);
 
-    cout<<"nextGreaterElement"<<endl;
+    cout << "nextGreaterElement" << endl;
     for (int i = 0; i < result.size(); i++)
     {
         cout << result[i] << " ";
     }
 
     cout << endl;
-    cout<<"nextSmallerElement"<<endl;
+    cout << "nextSmallerElement" << endl;
     for (int i = 0; i < result1.size(); i++)
     {
         cout << result1[i] << " ";
     }
 
     cout << endl;
-    cout<<"prevGreaterElement"<<endl;
+    cout << "prevGreaterElement" << endl;
     for (int i = 0; i < result1.size(); i++)
     {
         cout << result2[i] << " ";
     }
 
     cout << endl;
-    cout<<"prevSmallerElement"<<endl;
+    cout << "prevSmallerElement" << endl;
     for (int i = 0; i < result1.size(); i++)
     {
         cout << result3[i] << " ";
