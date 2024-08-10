@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <limits.h>
 #define ll long long int
 
 using namespace std;
@@ -52,7 +53,7 @@ public:
     {
         if (this->st.size() == 1)
             return this->st.top();
-        else if (this->st.top() < 0)
+        else if (this->st.top() <= 0)
         {
             return this->mn;
         }
@@ -83,10 +84,10 @@ int main()
     ms.push(-2);
     ms.push(0);
     ms.push(-3);
-    cout<<ms.getMin()<<endl;
+    cout << ms.getMin() << endl;
     ms.pop();
-    cout<<ms.top()<<endl;
-    cout<<ms.getMin()<<endl;
+    cout << ms.top() << endl;
+    cout << ms.getMin() << endl;
 
     return 0;
 }
