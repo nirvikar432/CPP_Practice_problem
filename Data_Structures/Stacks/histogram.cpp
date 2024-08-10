@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <limits.h>
 using namespace std;
 
 int histogram(vector<int> &arr)
@@ -49,7 +50,7 @@ int main()
     }
 
     int ans = histogram(input);
-    cout<<ans<<endl;
+    cout << ans << endl;
 
     return 0;
 }

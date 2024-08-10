@@ -1,25 +1,29 @@
 #include <iostream>
-#include<stack>
-#include<vector>
+#include <stack>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
-vector<int> previousGreaterElement(vector<int> &arr){
+vector<int> previousGreaterElement(vector<int> &arr)
+{
     int size = arr.size();
-    reverse(arr.begin(),arr.end());
+    reverse(arr.begin(), arr.end());
     stack<int> index;
-    vector<int> output(size,-1);
+    vector<int> output(size, -1);
     index.push(0);
-    for(int i=1;i<size;i++){
-        while(!index.empty()&& arr[i]>arr[index.top()]){
-            output[index.top()] = size-1-i;     //we need to store the original idx i.e idx before reverse for arr.
+    for (int i = 1; i < size; i++)
+    {
+        while (!index.empty() && arr[i] > arr[index.top()])
+        {
+            output[index.top()] = size - 1 - i; // we need to store the original idx i.e idx before reverse for arr.
             index.pop();
-
         }
         index.push(i);
     }
 
-    reverse(output.begin(),output.end());   //to get previous greater element output idx
-    reverse(arr.begin(),arr.end()); // To get the original array
+    reverse(output.begin(), output.end()); // to get previous greater element output idx
+    reverse(arr.begin(), arr.end());       // To get the original array
 
     return output;
 }
@@ -39,16 +43,14 @@ int main()
 
     vector<int> result = previousGreaterElement(input);
 
-    cout<<"nextGreaterElement"<<endl;
+    cout << "nextGreaterElement" << endl;
     for (int i = 0; i < result.size(); i++)
     {
-        cout << i-result[i] << " ";
+        cout << i - result[i] << " ";
     }
-    cout<<endl;
+    cout << endl;
     return 0;
 }
 
-
-
-//7
-// 100 80 60 70 60 75 85
+// 7
+//  100 80 60 70 60 75 85
