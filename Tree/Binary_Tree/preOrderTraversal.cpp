@@ -33,3 +33,6 @@ int main()
     
     return 0;
 }
+
+
+// output : 2 4 6 5 10 11
